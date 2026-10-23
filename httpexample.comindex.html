@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-fx="2">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>盛世迎华诞，青春献祖国 · 庆祝新中国成立77周年主题班会</title>
+<style>
+/* ============ 基础与缩放 ============ */
+:root{--u:1px;
+  --ink:#2A211C; --muted:#8A7B6C; --wine:#8A1E2D; --wine2:#6E1622;
+  --gold:#B08A3C; --gold2:#8F6B27; --cream:#F7F1E6; --cream2:#EFE5D2;
+  --line:rgba(176,138,60,.45);
+  --td:.88s; --te:cubic-bezier(.22,1,.36,1); --st:.055s; --bd:.16s; --dy:26; --blur:3;
+}
+:root[data-fx="1"]{--td:.62s;--te:cubic-bezier(.25,.9,.3,1);--st:0s;--bd:.10s;--dy:14;--blur:0}
+:root[data-fx="3"]{--td:1.15s;--te:cubic-bezier(.16,1,.3,1);--st:.085s;--bd:.22s;--dy:46;--blur:6}
+.noanim *{transition:none!important;animation:none!important}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:#221A15;overflow:hidden;font-family:"Noto Sans SC","Source Han Sans SC","Microsoft YaHei",sans-serif;color:var(--ink)}
+.serif{font-family:"Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif}
+
+/* ============ 舞台 ============ */
+#stage{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:calc(1600*var(--u));height:calc(900*var(--u));
+  background:radial-gradient(120% 90% at 50% 8%, #FBF6EC 0%, var(--cream) 46%, var(--cream2) 100%);
+  box-shadow:0 calc(40*var(--u)) calc(120*var(--u)) rgba(0,0,0,.55);
+  overflow:hidden}
+#stage::after{content:"";position:absolute;inset:calc(26*var(--u));
+  border:1px solid rgba(176,138,60,.38);pointer-events:none}
+#stage::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90% 70% at 50% 45%, transparent 62%, rgba(120,85,40,.10) 100%)}
+
+/* ============ 页面 ============ */
+.page{position:absolute;left:0;top:0;width:calc(1600*var(--u));height:calc(900*var(--u));
+  opacity:0;transition:opacity .34s linear;pointer-events:none}
+.page.on{opacity:1;transition:opacity 0s linear}
+.ln{position:absolute}
+.page.on .ln{animation:lnIn calc(var(--td)*.82) var(--te) both;
+  animation-delay:calc(var(--bd) + var(--i,0)*var(--st))}
+@keyframes lnIn{from{opacity:0;transform:translateY(calc(var(--dy)*var(--u)));filter:blur(calc(var(--blur)*var(--u)))}
+  to{opacity:1;transform:none;filter:blur(0)}}
+
+/* ============ Actor（跨页变形元素） ============ */
+.a{position:absolute;
+  transition-property:left,top,width,height,opacity,color;
+  transition-duration:var(--td);transition-timing-function:var(--te)}
+.a svg{display:block;width:100%;height:100%}
+#star{color:var(--gold)}
+#rule{background:var(--gold);border-radius:calc(2*var(--u))}
+#pageno{left:calc(1442*var(--u));top:calc(842*var(--u));font-size:calc(18*var(--u));
+  letter-spacing:calc(3*var(--u));color:var(--muted);font-variant-numeric:tabular-nums}
+#chaptag{left:calc(80*var(--u));top:calc(52*var(--u));font-size:calc(18*var(--u));
+  letter-spacing:calc(6*var(--u));color:var(--gold2)}
+/* 星星逐页轨迹 */
+[data-slide="1"] #star{left:calc(612*var(--u));top:calc(128*var(--u));width:calc(380*var(--u));height:calc(380*var(--u));opacity:.14;color:var(--wine)}
+[data-slide="2"] #star{left:calc(96*var(--u));top:calc(96*var(--u));width:calc(76*var(--u));height:calc(76*var(--u));opacity:1;color:var(--gold)}
+[data-slide="3"] #star{left:calc(766*var(--u));top:calc(84*var(--u));width:calc(68*var(--u));height:calc(68*var(--u));opacity:1;color:var(--gold)}
+[data-slide="4"] #star{left:calc(1010*var(--u));top:calc(210*var(--u));width:calc(430*var(--u));height:calc(430*var(--u));opacity:.15;color:var(--wine)}
+[data-slide="5"] #star{left:calc(100*var(--u));top:calc(104*var(--u));width:calc(64*var(--u));height:calc(64*var(--u));opacity:1;color:var(--gold)}
+[data-slide="6"] #star{left:calc(1428*var(--u));top:calc(100*var(--u));width:calc(64*var(--u));height:calc(64*var(--u));opacity:1;color:var(--gold)}
+[data-slide="7"] #star{left:calc(70*var(--u));top:calc(190*var(--u));width:calc(380*var(--u));height:calc(380*var(--u));opacity:.14;color:var(--wine)}
+[data-slide="8"] #star{left:calc(1430*var(--u));top:calc(710*var(--u));width:calc(70*var(--u));height:calc(70*var(--u));opacity:1;color:var(--gold)}
+[data-slide="9"] #star{left:calc(1426*var(--u));top:calc(96*var(--u));width:calc(66*var(--u));height:calc(66*var(--u));opacity:1;color:var(--gold)}
+[data-slide="10"] #star{left:calc(96*var(--u));top:calc(96*var(--u));width:calc(76*var(--u));height:calc(76*var(--u));opacity:1;color:var(--gold)}
+[data-slide="11"] #star{left:calc(578*var(--u));top:calc(216*var(--u));width:calc(444*var(--u));height:calc(444*var(--u));opacity:.11;color:var(--wine)}
+[data-slide="12"] #star{left:calc(636*var(--u));top:calc(196*var(--u));width:calc(330*var(--u));height:calc(330*var(--u));opacity:.16;color:var(--wine)}
+/* 金线逐页轨迹 */
+[data-slide="1"] #rule{left:calc(680*var(--u));top:calc(640*var(--u));width:calc(240*var(--u));height:calc(3*var(--u));opacity:1}
+[data-slide="2"] #rule{left:calc(222*var(--u));top:calc(456*var(--u));width:calc(560*var(--u));height:calc(2*var(--u));opacity:1}
+[data-slide="3"] #rule{left:calc(800*var(--u));top:calc(240*var(--u));width:calc(2*var(--u));height:calc(460*var(--u));opacity:1}
+[data-slide="4"] #rule{left:calc(160*var(--u));top:calc(478*var(--u));width:calc(430*var(--u));height:calc(3*var(--u));opacity:1}
+[data-slide="5"] #rule{left:calc(120*var(--u));top:calc(500*var(--u));width:calc(1360*var(--u));height:calc(2*var(--u));opacity:1}
+[data-slide="6"] #rule{left:calc(120*var(--u));top:calc(296*var(--u));width:calc(1360*var(--u));height:calc(2*var(--u));opacity:1}
+[data-slide="7"] #rule{left:calc(880*var(--u));top:calc(206*var(--u));width:calc(580*var(--u));height:calc(2*var(--u));opacity:1}
+[data-slide="8"] #rule{left:calc(150*var(--u));top:calc(330*var(--u));width:calc(3*var(--u));height:calc(420*var(--u));opacity:1}
+[data-slide="9"] #rule{left:calc(122*var(--u));top:calc(356*var(--u));width:calc(720*var(--u));height:calc(2*var(--u));opacity:1}
+[data-slide="10"] #rule{left:calc(120*var(--u));top:calc(286*var(--u));width:calc(1360*var(--u));height:calc(2*var(--u));opacity:1}
+[data-slide="11"] #rule{left:calc(120*var(--u));top:calc(286*var(--u));width:calc(1360*var(--u));height:calc(2*var(--u));opacity:1}
+[data-slide="12"] #rule{left:calc(620*var(--u));top:calc(548*var(--u));width:calc(360*var(--u));height:calc(3*var(--u));opacity:1}
+
+/* ============ 通用文字件 ============ */
+.eyebrow{font-size:calc(22*var(--u));letter-spacing:calc(10*var(--u));color:var(--gold2);font-weight:500}
+.h-big{font-family:"Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;color:var(--wine);font-weight:600;line-height:1.3}
+.sub{font-size:calc(24*var(--u));letter-spacing:calc(5*var(--u));color:var(--muted)}
+.tagv{writing-mode:vertical-rl;font-size:calc(24*var(--u));letter-spacing:calc(18*var(--u));color:var(--gold2);font-weight:500}
+
+/* ---------- P1 封面 ---------- */
+.p1 .eb{left:calc(500*var(--u));top:calc(236*var(--u));width:calc(600*var(--u));text-align:center;font-size:calc(22*var(--u));letter-spacing:calc(12*var(--u));color:var(--gold2)}
+.p1 .t{left:calc(200*var(--u));top:calc(300*var(--u));width:calc(1200*var(--u));text-align:center;font-size:calc(96*var(--u));letter-spacing:calc(16*var(--u))}
+.p1 .t.l2{top:calc(428*var(--u))}
+.p1 .sub{left:calc(500*var(--u));top:calc(672*var(--u));width:calc(600*var(--u));text-align:center;font-size:calc(25*var(--u));letter-spacing:calc(8*var(--u));color:var(--ink)}
+.p1 .cls{left:calc(500*var(--u));top:calc(824*var(--u));width:calc(600*var(--u));text-align:center;font-size:calc(19*var(--u));letter-spacing:calc(4*var(--u));color:var(--muted)}
+
+/* ---------- P2 导入 ---------- */
+.p2 .vt{left:calc(96*var(--u));top:calc(240*var(--u))}
+.p2 .t{left:calc(220*var(--u));top:calc(224*var(--u));font-size:calc(74*var(--u));letter-spacing:calc(6*var(--u))}
+.p2 .t.l2{top:calc(322*var(--u))}
+.p2 .s{left:calc(224*var(--u));top:calc(486*var(--u))}
+.p2 .c{top:calc(576*var(--u));width:calc(290*var(--u));height:calc(170*var(--u));
+  border:1px solid var(--line);background:rgba(255,252,244,.5);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(14*var(--u))}
+.p2 .c .n{font-family:"Noto Serif SC",serif;font-size:calc(20*var(--u));color:var(--gold);letter-spacing:calc(4*var(--u))}
+.p2 .c .w{font-family:"Noto Serif SC",serif;font-size:calc(34*var(--u));color:var(--ink);letter-spacing:calc(8*var(--u));font-weight:600}
+.p2 .c1{left:calc(222*var(--u))}.p2 .c2{left:calc(532*var(--u))}.p2 .c3{left:calc(842*var(--u))}.p2 .c4{left:calc(1152*var(--u))}
+
+/* ---------- P3 导航 ---------- */
+.p3 .q{left:calc(140*var(--u));top:calc(310*var(--u));width:calc(580*var(--u));
+  font-family:"Noto Serif SC",serif;font-size:calc(44*var(--u));line-height:1.75;color:var(--wine);font-weight:600}
+.p3 .row{left:calc(900*var(--u));display:flex;align-items:baseline;gap:calc(30*var(--u))}
+.p3 .row .n{font-family:"Noto Serif SC",serif;font-size:calc(30*var(--u));color:var(--gold);font-style:italic}
+.p3 .row .w{font-family:"Noto Serif SC",serif;font-size:calc(36*var(--u));color:var(--ink);font-weight:600;letter-spacing:calc(3*var(--u))}
+.p3 .r1{top:calc(252*var(--u))}.p3 .r2{top:calc(366*var(--u))}.p3 .r3{top:calc(480*var(--u))}.p3 .r4{top:calc(594*var(--u))}
+
+/* ---------- P4 篇章一 ---------- */
+.p4 .ct{left:calc(162*var(--u));top:calc(300*var(--u))}
+.p4 .t{left:calc(156*var(--u));top:calc(352*var(--u));font-size:calc(80*var(--u));letter-spacing:calc(6*var(--u))}
+.p4 .s{left:calc(162*var(--u));top:calc(516*var(--u))}
+.p4 .num{left:calc(1148*var(--u));top:calc(520*var(--u));font-family:"Noto Serif SC",serif;
+  font-size:calc(150*var(--u));color:var(--wine);font-weight:600}
+
+/* ---------- P5 国旗下学习 ---------- */
+.p5 .t{left:calc(120*var(--u));top:calc(310*var(--u));font-size:calc(62*var(--u));letter-spacing:calc(4*var(--u))}
+.p5 .s{left:calc(124*var(--u));top:calc(418*var(--u))}
+.p5 .k{top:calc(536*var(--u));width:calc(320*var(--u));text-align:center}
+.p5 .k i{position:absolute;left:50%;top:calc(-40*var(--u));width:calc(12*var(--u));height:calc(12*var(--u));
+  margin-left:calc(-6*var(--u));border-radius:50%;background:var(--wine);box-shadow:0 0 0 calc(4*var(--u)) rgba(176,138,60,.5)}
+.p5 .k b{display:block;font-family:"Noto Serif SC",serif;font-size:calc(34*var(--u));color:var(--ink);font-weight:600;letter-spacing:calc(4*var(--u))}
+.p5 .k span{display:block;margin-top:calc(10*var(--u));font-size:calc(20*var(--u));color:var(--muted);letter-spacing:calc(3*var(--u))}
+.p5 .k1{left:calc(180*var(--u))}.p5 .k2{left:calc(640*var(--u))}.p5 .k3{left:calc(1100*var(--u))}
+
+/* ---------- P6 四大成就 ---------- */
+.p6 .t{left:calc(120*var(--u));top:calc(132*var(--u));font-size:calc(58*var(--u));letter-spacing:calc(4*var(--u))}
+.p6 .s{left:calc(124*var(--u));top:calc(232*var(--u))}
+.p6 .card{top:calc(360*var(--u));width:calc(320*var(--u));height:calc(400*var(--u));
+  border-top:calc(2*var(--u)) solid var(--gold);background:rgba(255,252,244,.45);
+  padding:calc(34*var(--u)) calc(30*var(--u))}
+.p6 .card .n{font-family:"Noto Serif SC",serif;font-style:italic;font-size:calc(24*var(--u));color:var(--gold)}
+.p6 .card .w{margin-top:calc(22*var(--u));font-family:"Noto Serif SC",serif;font-size:calc(54*var(--u));color:var(--wine);font-weight:600;letter-spacing:calc(6*var(--u))}
+.p6 .card .d{margin-top:calc(20*var(--u));font-size:calc(24*var(--u));color:var(--ink);letter-spacing:calc(3*var(--u))}
+.p6 .card .e{margin-top:calc(16*var(--u));font-size:calc(19*var(--u));color:var(--muted);line-height:1.7}
+.p6 .g1{left:calc(120*var(--u))}.p6 .g2{left:calc(450*var(--u))}.p6 .g3{left:calc(780*var(--u))}.p6 .g4{left:calc(1110*var(--u))}
+
+/* ---------- P7 光影定格 ---------- */
+.p7 .ct{left:calc(120*var(--u));top:calc(236*var(--u))}
+.p7 .t{left:calc(116*var(--u));top:calc(292*var(--u));font-size:calc(70*var(--u));letter-spacing:calc(4*var(--u))}
+.p7 .s{left:calc(120*var(--u));top:calc(430*var(--u));width:calc(600*var(--u));line-height:1.8}
+.p7 .kw{left:calc(120*var(--u));top:calc(700*var(--u));font-size:calc(23*var(--u));letter-spacing:calc(5*var(--u));color:var(--gold2)}
+.p7 .b{left:calc(880*var(--u));width:calc(580*var(--u));height:calc(160*var(--u));
+  border:1px solid var(--line);background:rgba(255,252,244,.55);padding:calc(30*var(--u)) calc(36*var(--u))}
+.p7 .b .w{font-family:"Noto Serif SC",serif;font-size:calc(34*var(--u));color:var(--wine);font-weight:600;letter-spacing:calc(2*var(--u))}
+.p7 .b .d{margin-top:calc(12*var(--u));font-size:calc(21*var(--u));color:var(--muted);letter-spacing:calc(2*var(--u))}
+.p7 .b1{top:calc(238*var(--u))}.p7 .b2{top:calc(428*var(--u))}
+
+/* ---------- P8 同频共振 ---------- */
+.p8 .ct{left:calc(200*var(--u));top:calc(150*var(--u))}
+.p8 .t{left:calc(196*var(--u));top:calc(202*var(--u));font-size:calc(70*var(--u));letter-spacing:calc(4*var(--u))}
+.p8 .row{display:flex;align-items:baseline;gap:calc(46*var(--u))}
+.p8 .row .w{font-family:"Noto Serif SC",serif;font-size:calc(50*var(--u));color:var(--wine);font-weight:600;letter-spacing:calc(6*var(--u))}
+.p8 .row .n{font-size:calc(27*var(--u));color:var(--muted);letter-spacing:calc(3*var(--u))}
+.p8 .r1{left:calc(220*var(--u));top:calc(392*var(--u))}
+.p8 .r2{left:calc(340*var(--u));top:calc(502*var(--u))}
+.p8 .r3{left:calc(460*var(--u));top:calc(612*var(--u))}
+.p8 .row .arr{color:var(--gold);font-size:calc(30*var(--u))}
+
+/* ---------- P9 立足学业 ---------- */
+.p9 .ct{left:calc(122*var(--u));top:calc(128*var(--u))}
+.p9 .t{left:calc(118*var(--u));top:calc(178*var(--u));font-size:calc(70*var(--u));letter-spacing:calc(4*var(--u))}
+.p9 .s{left:calc(122*var(--u));top:calc(300*var(--u));font-family:"Noto Serif SC",serif;
+  font-size:calc(38*var(--u));color:var(--wine);font-weight:600;letter-spacing:calc(3*var(--u))}
+.p9 .bar{left:calc(122*var(--u));width:calc(820*var(--u));display:flex;align-items:baseline;gap:calc(34*var(--u));
+  padding-bottom:calc(18*var(--u));border-bottom:1px solid var(--line)}
+.p9 .bar .n{font-family:"Noto Serif SC",serif;font-style:italic;font-size:calc(24*var(--u));color:var(--gold)}
+.p9 .bar .w{font-family:"Noto Serif SC",serif;font-size:calc(40*var(--u));color:var(--ink);font-weight:600;letter-spacing:calc(4*var(--u))}
+.p9 .bar .d{margin-left:auto;font-size:calc(21*var(--u));color:var(--muted)}
+.p9 .b1{top:calc(420*var(--u))}.p9 .b2{top:calc(510*var(--u))}.p9 .b3{top:calc(600*var(--u))}
+.p9 .end{left:calc(122*var(--u));top:calc(700*var(--u));font-size:calc(27*var(--u));letter-spacing:calc(6*var(--u));color:var(--gold2)}
+
+/* ---------- P10 生活行动 ---------- */
+.p10 .t{left:calc(200*var(--u));top:calc(160*var(--u));width:calc(1200*var(--u));text-align:center;
+  font-size:calc(56*var(--u));letter-spacing:calc(4*var(--u))}
+.p10 .w{top:calc(400*var(--u));width:calc(360*var(--u));text-align:center}
+.p10 .w b{font-family:"Noto Serif SC",serif;font-size:calc(66*var(--u));color:var(--ink);font-weight:600;letter-spacing:calc(8*var(--u))}
+.p10 .w span{display:block;margin-top:calc(20*var(--u));font-size:calc(22*var(--u));color:var(--muted);letter-spacing:calc(4*var(--u))}
+.p10 .w1{left:calc(170*var(--u))}.p10 .w2{left:calc(620*var(--u))}.p10 .w3{left:calc(1070*var(--u))}
+.p10 .v{top:calc(400*var(--u));width:calc(1*var(--u));height:calc(140*var(--u));background:var(--line)}
+.p10 .v1{left:calc(590*var(--u))}.p10 .v2{left:calc(1040*var(--u))}
+.p10 .end{left:calc(400*var(--u));top:calc(680*var(--u));width:calc(800*var(--u));text-align:center;
+  font-size:calc(25*var(--u));letter-spacing:calc(6*var(--u));color:var(--gold2)}
+
+/* ---------- P11 青年寄语 ---------- */
+.p11 .t{left:calc(300*var(--u));top:calc(168*var(--u));width:calc(1000*var(--u));text-align:center;
+  font-size:calc(54*var(--u));letter-spacing:calc(4*var(--u))}
+.p11 .c{width:calc(320*var(--u));text-align:center}
+.p11 .c i{display:block;font-family:"Noto Serif SC",serif;font-style:italic;font-size:calc(22*var(--u));color:var(--gold)}
+.p11 .c b{display:block;margin-top:calc(10*var(--u));font-family:"Noto Serif SC",serif;
+  font-size:calc(80*var(--u));color:var(--ink);font-weight:600;letter-spacing:calc(10*var(--u))}
+.p11 .c1{left:calc(520*var(--u));top:calc(330*var(--u))}.p11 .c2{left:calc(940*var(--u));top:calc(330*var(--u))}
+.p11 .c3{left:calc(520*var(--u));top:calc(520*var(--u))}.p11 .c4{left:calc(940*var(--u));top:calc(520*var(--u))}
+.p11 .end{left:calc(400*var(--u));top:calc(742*var(--u));width:calc(800*var(--u));text-align:center;
+  font-size:calc(25*var(--u));letter-spacing:calc(6*var(--u));color:var(--gold2)}
+
+/* ---------- P12 结束 ---------- */
+.p12 .eb{left:calc(500*var(--u));top:calc(268*var(--u));width:calc(600*var(--u));text-align:center;font-size:calc(22*var(--u));letter-spacing:calc(12*var(--u));color:var(--gold2)}
+.p12 .t{left:calc(150*var(--u));top:calc(346*var(--u));width:calc(1300*var(--u));text-align:center;
+  font-size:calc(84*var(--u));letter-spacing:calc(10*var(--u))}
+.p12 .sub{left:calc(450*var(--u));top:calc(590*var(--u));width:calc(700*var(--u));text-align:center;
+  font-size:calc(27*var(--u));letter-spacing:calc(6*var(--u));color:var(--ink)}
+.p12 .sig{left:calc(450*var(--u));top:calc(668*var(--u));width:calc(700*var(--u));text-align:center;
+  font-size:calc(21*var(--u));letter-spacing:calc(4*var(--u));color:var(--muted)}
+
+/* ============ 遮罩与面板 ============ */
+#black{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+#black.on{opacity:1}
+#notes{position:fixed;right:calc(24*var(--u) + 16px);top:16px;width:min(460px,38vw);max-height:86vh;overflow:auto;
+  background:rgba(24,17,13,.92);color:#F3E9D6;border:1px solid rgba(176,138,60,.5);border-radius:10px;
+  padding:22px 24px;font-size:15px;line-height:1.9;display:none;z-index:50}
+#notes.on{display:block}
+#notes h4{font-family:"Noto Serif SC",serif;color:#E4C27A;font-size:17px;margin-bottom:10px;letter-spacing:2px}
+#help{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:50;
+  background:rgba(24,17,13,.88);color:#E9DCC2;border:1px solid rgba(176,138,60,.45);border-radius:8px;
+  padding:10px 20px;font-size:13.5px;letter-spacing:1px;transition:opacity .5s}
+#help.hide{opacity:0;pointer-events:none}
+#help b{color:#E4C27A;font-weight:600}
+</style>
+</head>
+<body>
+<div id="stage" data-slide="1">
+
+  <!-- Actor：五角星 -->
+  <div class="a" id="star" aria-hidden="true">
+    <svg viewBox="0 0 200 200" fill="currentColor">
+      <polygon points="100,10 122.3,69.3 185.6,72.2 136.1,111.7 152.9,172.8 100,138 47.1,172.8 63.9,111.7 14.4,72.2 77.7,69.3"/>
+    </svg>
+  </div>
+  <!-- Actor：金线 -->
+  <div class="a" id="rule" aria-hidden="true"></div>
+  <!-- Actor：章节标 & 页码 -->
+  <div class="a serif" id="chaptag">封面</div>
+  <div class="a" id="pageno">01 / 12</div>
+
+  <!-- ============ P1 封面 ============ -->
+  <section class="page p1 on">
+    <div class="ln p1 eb serif" style="--i:0">主题班会 · 二〇二六</div>
+    <div class="ln p1 t h-big" style="--i:1">盛世迎华诞</div>
+    <div class="ln p1 t l2 h-big" style="--i:2">青春献祖国</div>
+    <div class="ln p1 sub" style="--i:3">庆祝新中国成立 77 周年</div>
+    <div class="ln p1 cls" style="--i:4">26金融（闽台）1班 · 2026 金秋</div>
+  </section>
+
+  <!-- ============ P2 导入 ============ -->
+  <section class="page p2">
+    <div class="ln p2 vt" style="--i:0">导 入</div>
+    <div class="ln p2 t h-big" style="--i:1">从积贫积弱</div>
+    <div class="ln p2 t l2 h-big" style="--i:2">走向繁荣富强</div>
+    <div class="ln p2 s" style="--i:3">七十七载风雨兼程 · 七十七载砥砺前行</div>
+    <div class="ln p2 c c1" style="--i:4"><div class="n">壹</div><div class="w">风雨兼程</div></div>
+    <div class="ln p2 c c2" style="--i:5"><div class="n">贰</div><div class="w">砥砺前行</div></div>
+    <div class="ln p2 c c3" style="--i:6"><div class="n">叁</div><div class="w">艰难探索</div></div>
+    <div class="ln p2 c c4" style="--i:7"><div class="n">肆</div><div class="w">盛世腾飞</div></div>
+  </section>
+
+  <!-- ============ P3 导航 ============ -->
+  <section class="page p3">
+    <div class="ln p3 q" style="--i:0">青年最纯粹的底色，是爱国。<br>新时代青年最坚定的追求，是报国。</div>
+    <div class="ln p3 row r1" style="--i:1"><span class="n">01</span><span class="w">仰望国旗 · 感悟辉煌</span></div>
+    <div class="ln p3 row r2" style="--i:2"><span class="n">02</span><span class="w">光影定格 · 赓续初心</span></div>
+    <div class="ln p3 row r3" style="--i:3"><span class="n">03</span><span class="w">同频共振 · 校庆共话</span></div>
+    <div class="ln p3 row r4" style="--i:4"><span class="n">04</span><span class="w">立足学业 · 实干担当</span></div>
+  </section>
+
+  <!-- ============ P4 篇章一 ============ -->
+  <section class="page p4">
+    <div class="ln p4 ct eyebrow serif" style="--i:0">第一篇章</div>
+    <div class="ln p4 t h-big" style="--i:1">仰望国旗 · 感悟辉煌</div>
+    <div class="ln p4 s sub" style="--i:2">国旗下主题学习 · 国家发展成就</div>
+    <div class="ln p4 num" style="--i:3">壹</div>
+  </section>
+
+  <!-- ============ P5 国旗下学习 ============ -->
+  <section class="page p5">
+    <div class="ln p5 t h-big" style="--i:0">重温红色历史，体悟国旗荣光</div>
+    <div class="ln p5 s sub" style="--i:1">国旗下主题学习 · 让爱国情怀深深扎根心中</div>
+    <div class="ln p5 k k1" style="--i:2"><i></i><b>重温红色历史</b><span>知史明志</span></div>
+    <div class="ln p5 k k2" style="--i:3"><i></i><b>体悟国旗荣光</b><span>心有旗帜</span></div>
+    <div class="ln p5 k k3" style="--i:4"><i></i><b>深深扎根</b><span>情怀入土</span></div>
+  </section>
+
+  <!-- ============ P6 四大成就 ============ -->
+  <section class="page p6">
+    <div class="ln p6 t h-big" style="--i:0">看见祖国的跨越式发展</div>
+    <div class="ln p6 s sub" style="--i:1">深刻感受新时代的蓬勃力量</div>
+    <div class="ln p6 card g1" style="--i:2"><div class="n">01</div><div class="w">科技</div><div class="d">跨越突破</div><div class="e">从跟跑、并跑到领跑<br>创新引擎全速运转</div></div>
+    <div class="ln p6 card g2" style="--i:3"><div class="n">02</div><div class="w">国防</div><div class="d">钢铁长城</div><div class="e">大国重器护卫山河<br>和平底气坚如磐石</div></div>
+    <div class="ln p6 card g3" style="--i:4"><div class="n">03</div><div class="w">民生</div><div class="d">幸福底色</div><div class="e">脱贫攻坚全面胜利<br>美好生活可感可及</div></div>
+    <div class="ln p6 card g4" style="--i:5"><div class="n">04</div><div class="w">教育</div><div class="d">立德树人</div><div class="e">公平优质惠及万家<br>青春梦想拔节生长</div></div>
+  </section>
+
+  <!-- ============ P7 光影定格 ============ -->
+  <section class="page p7">
+    <div class="ln p7 ct eyebrow serif" style="--i:0">第二篇章</div>
+    <div class="ln p7 t h-big" style="--i:1">光影定格 · 赓续初心</div>
+    <div class="ln p7 s sub" style="--i:2">一张张青春笑脸，一帧帧红色影像，<br>记录着我们对祖国最真挚的祝福。</div>
+    <div class="ln p7 b b1" style="--i:3"><div class="w">「我与国旗同框」打卡</div><div class="d">定格赤诚初心 · 收藏荣光瞬间</div></div>
+    <div class="ln p7 b b2" style="--i:4"><div class="w">红色影片观影</div><div class="d">重温峥嵘岁月 · 赓续奋斗精神</div></div>
+    <div class="ln p7 kw" style="--i:5">沉浸式学习 · 传承红色基因 · 赓续奋斗精神</div>
+  </section>
+
+  <!-- ============ P8 同频共振 ============ -->
+  <section class="page p8">
+    <div class="ln p8 ct eyebrow serif" style="--i:0">第三篇章</div>
+    <div class="ln p8 t h-big" style="--i:1">同频共振 · 校庆共话</div>
+    <div class="ln p8 row r1" style="--i:2"><span class="w">国家发展</span><span class="arr">→</span><span class="n">安稳优越的成长环境</span></div>
+    <div class="ln p8 row r2" style="--i:3"><span class="w">学校成长</span><span class="arr">→</span><span class="n">成才追梦的平台</span></div>
+    <div class="ln p8 row r3" style="--i:4"><span class="w">我的青春</span><span class="arr">→</span><span class="n">同频共振的理想与担当</span></div>
+  </section>
+
+  <!-- ============ P9 立足学业 ============ -->
+  <section class="page p9">
+    <div class="ln p9 ct eyebrow serif" style="--i:0">第四篇章</div>
+    <div class="ln p9 t h-big" style="--i:1">立足学业 · 实干担当</div>
+    <div class="ln p9 s" style="--i:2">最好的爱国，是立足当下、立足学业</div>
+    <div class="ln p9 bar b1" style="--i:3"><span class="n">01</span><span class="w">端正学习态度</span><span class="d">把心思收回课堂与书桌</span></div>
+    <div class="ln p9 bar b2" style="--i:4"><span class="n">02</span><span class="w">刻苦钻研知识</span><span class="d">在难题深处见真章</span></div>
+    <div class="ln p9 bar b3" style="--i:5"><span class="n">03</span><span class="w">锤炼过硬本领</span><span class="d">让能力配得上理想</span></div>
+    <div class="ln p9 end" style="--i:6">以勤学笃行，夯实青春根基</div>
+  </section>
+
+  <!-- ============ P10 生活行动 ============ -->
+  <section class="page p10">
+    <div class="ln p10 t h-big" style="--i:0">把爱国情怀，过成每一天</div>
+    <div class="ln p10 w w1" style="--i:1"><b>严于律己</b><span>自律修身</span></div>
+    <div class="ln p10 v v1" style="--i:2"></div>
+    <div class="ln p10 w w2" style="--i:3"><b>团结同学</b><span>与人为善</span></div>
+    <div class="ln p10 v v2" style="--i:4"></div>
+    <div class="ln p10 w w3" style="--i:5"><b>积极向上</b><span>向光而行</span></div>
+    <div class="ln p10 end" style="--i:6">用实干担当，践行青年使命</div>
+  </section>
+
+  <!-- ============ P11 青年寄语 ============ -->
+  <section class="page p11">
+    <div class="ln p11 t h-big" style="--i:0">以青春之名，担时代之责</div>
+    <div class="ln p11 c c1" style="--i:1"><i>壹</i><b>有理想</b></div>
+    <div class="ln p11 c c2" style="--i:2"><i>贰</i><b>敢担当</b></div>
+    <div class="ln p11 c c3" style="--i:3"><i>叁</i><b>能吃苦</b></div>
+    <div class="ln p11 c c4" style="--i:4"><i>肆</i><b>肯奋斗</b></div>
+    <div class="ln p11 end" style="--i:5">把个人梦想，融入强国梦想</div>
+  </section>
+
+  <!-- ============ P12 结束 ============ -->
+  <section class="page p12">
+    <div class="ln p12 eb serif" style="--i:0">青春誓言</div>
+    <div class="ln p12 t h-big" style="--i:1">盛世逢华诞，青春正当时</div>
+    <div class="ln p12 sub" style="--i:2">以奋斗致祖国 · 以实干献华诞</div>
+    <div class="ln p12 sig" style="--i:3">—— 有理想 · 敢担当 · 能吃苦 · 肯奋斗</div>
+  </section>
+
+</div>
+
+<div id="black"></div>
+<aside id="notes"><h4 id="notes-title">备注</h4><div id="notes-body"></div></aside>
+<div id="help"><b>←→</b> 翻页 · <b>1/2/3</b> 动效强度 · <b>N</b> 演讲备注 · <b>F</b> 全屏 · <b>B</b> 黑屏 · <b>数字+回车</b> 跳页</div>
+
+<script>
+(function(){
+  var N=12, cur=1, locked=false;
+  var deck=document.getElementById('stage');
+  var pages=document.querySelectorAll('.page');
+  var pageno=document.getElementById('pageno'), chaptag=document.getElementById('chaptag');
+  var notes=document.getElementById('notes'), notesT=document.getElementById('notes-title'), notesB=document.getElementById('notes-body');
+  var chapters=['封面','导入','篇章导航','第一篇章','仰望国旗','发展成就','第二篇章','第三篇章','第四篇章','生活行动','青年寄语','结束页'];
+  var titles=['封面 · 盛世迎华诞，青春献祖国','导入 · 七十七载风雨兼程','篇章导航 · 四个篇章','第一篇章 · 仰望国旗，感悟辉煌','国旗下主题学习','四大发展成就','第二篇章 · 光影定格，赓续初心','第三篇章 · 同频共振，校庆共话','第四篇章 · 立足学业，实干担当','生活中的行动指南','青年寄语','结束 · 盛世逢华诞，青春正当时'];
+  var scripts=[
+    '尊敬的老师、亲爱的同学们：大家好！金秋送爽，盛世如歌。今年我们迎来新中国成立77周年的光辉华诞。',
+    '七十七载风雨兼程，七十七载砥砺前行，祖国从积贫积弱走向繁荣富强，从艰难探索走向盛世腾飞。今天，我们以主题班会的形式致敬伟大祖国，感悟时代使命，抒发青春担当。',
+    '青年最纯粹的底色是爱国，新时代青年最坚定的追求是报国。本次班会，我们将循着四个篇章，一同致敬伟大祖国、感悟时代使命。',
+    '第一篇章——仰望国旗，感悟辉煌。我们通过国旗下主题学习，重温红色历史、体悟国旗荣光。',
+    '通过国旗下主题学习，重温红色历史、体悟国旗荣光，让爱国情怀深深扎根心中。',
+    '通过学习国家发展成就，真切看见祖国在科技、国防、民生、教育等各个领域的跨越式发展，深刻感受新时代的蓬勃力量。',
+    '同时，我们开展「我与国旗同框」打卡、红色影片观影活动，在沉浸式学习中传承红色基因、赓续奋斗精神。一张张青春笑脸、一帧帧红色影像，记录着我们对祖国最真挚的祝福，也见证着新时代青年的赤诚初心。',
+    '结合学校校庆契机，我们围绕祖国发展、学校成长与我的青春展开交流讨论。我们深刻明白：国家的蓬勃发展为我们创造了安稳优越的成长环境，学校的稳步进步为我们搭建了成才追梦的平台，个人理想永远与国家发展、学校发展同频共振。',
+    '作为新时代青年学生，我们不必空谈远大抱负，最好的爱国，就是立足当下、立足学业。今后，我们将把满腔爱国情怀转化为踏实行动，端正学习态度、刻苦钻研知识、锤炼过硬本领，以勤学笃行夯实青春根基。',
+    '在生活中严于律己、团结同学、积极向上，用实干担当践行青年使命。',
+    '让我们以青春之名，担时代之责，把个人梦想融入强国梦想，以奋斗致祖国、以实干献华诞。',
+    '盛世逢华诞，青春正当时。让我们以青春之名，担时代之责，把个人梦想融入强国梦想，以奋斗致祖国、以实干献华诞，努力成长为有理想、敢担当、能吃苦、肯奋斗的新时代青年！'
+  ];
+  function pad(n){return (n<10?'0':'')+n}
+  function fit(){
+    document.documentElement.classList.add('noanim');
+    var u=Math.min(innerWidth/1600,innerHeight/900);
+    document.documentElement.style.setProperty('--u',u+'px');
+    setTimeout(function(){document.documentElement.classList.remove('noanim')},90);
+  }
+  function apply(n){
+    for(var i=0;i<pages.length;i++){pages[i].classList.toggle('on',i===n-1);}
+    deck.dataset.slide=String(n);
+    pageno.textContent=pad(n)+' / '+pad(N);
+    chaptag.textContent=chapters[n-1];
+    notesT.textContent='第'+n+'页 · '+titles[n-1];
+    notesB.textContent=scripts[n-1];
+  }
+  function go(n){
+    if(locked||n<1||n>N||n===cur)return;
+    cur=n;apply(n);
+    locked=true;
+    var td=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--td'))||0.88;
+    setTimeout(function(){locked=false},td*1150);
+  }
+  window.addEventListener('keydown',function(e){
+    var k=e.key;
+    if(buf!=='')return;
+    if(k===' '||k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k==='Enter'){e.preventDefault();go(cur+1);}
+    else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();go(cur-1);}
+    else if(k==='Home'){go(1);}
+    else if(k==='End'){go(N);}
+    else if(k==='f'||k==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+    else if(k==='b'||k==='B'){document.getElementById('black').classList.toggle('on');}
+    else if(k==='n'||k==='N'){notes.classList.toggle('on');}
+    else if(k==='1'||k==='2'||k==='3'){document.documentElement.dataset.fx=k;}
+    else if(/[0-9]/.test(k)){buf=(buf+k);if(buf.length>2)buf=buf.slice(-2);setTimeout(function(){buf=''},900);}
+  });
+  var buf='';
+  // Enter 处理跳页（若缓冲有数字）
+  window.addEventListener('keydown',function(e){
+    if(e.key==='Enter'&&buf!==''){var n=parseInt(buf,10);buf='';if(n>=1&&n<=N)go(n);}
+  },true);
+  var acc=0,timer=null;
+  window.addEventListener('wheel',function(e){
+    acc+=e.deltaY;
+    if(timer)clearTimeout(timer);
+    timer=setTimeout(function(){acc=0},240);
+    if(Math.abs(acc)>=90){var d=acc>0?1:-1;acc=0;go(cur+d);}
+  },{passive:true});
+  var hx=null,hy=null;
+  window.addEventListener('touchstart',function(e){hx=e.touches[0].clientX;hy=e.touches[0].clientY},{passive:true});
+  window.addEventListener('touchend',function(e){
+    if(hx===null)return;
+    var dx=e.changedTouches[0].clientX-hx, dy=e.changedTouches[0].clientY-hy;
+    if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy))go(cur+(dx<0?1:-1));
+    hx=null;
+  },{passive:true});
+  window.addEventListener('resize',fit);
+  fit();apply(1);
+  var h=parseInt(location.hash.slice(1),10);
+  if(h>=1&&h<=N){cur=h;apply(h);}
+  setTimeout(function(){document.getElementById('help').classList.add('hide')},6000);
+})();
+</script>
+</body>
+</html>
